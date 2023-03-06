@@ -64,11 +64,13 @@ const searchStartup = (searchText) => {
   return searchResult;
 }
 
+
 const checkStringIncludesAnotherWithoutCaseSensitivity = (mainString, searched) => {
   let mainStringLowerCased = getTurkishLowerCasedString(mainString);
   let searchStringLowerCased = getTurkishLowerCasedString(searched);
   return mainStringLowerCased.includes(searchStringLowerCased);
 }
+
 
 const getTurkishLowerCasedString = (text) => {
   return text.toLocaleLowerCase("tr");
