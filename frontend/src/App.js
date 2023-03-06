@@ -1,7 +1,7 @@
 import './App.css';
 import * as React from 'react';
 
-const infoOfStartups = [
+const INFO_OF_STARTUPS = [
   {"startupName": "Getir", 
    "startupWebSite": "https://getir.uk"},
 
@@ -37,7 +37,8 @@ const Search = () => {
           return (
             <StartupDetails startup={startup} />
           )
-        })}
+        })
+        }
       </div>
     </div>
   )
@@ -52,18 +53,25 @@ const StartupDetails = (props) => (
 )
 
 
-const searchStartup = (startupName) => {
-  let foundStartups = [];
-  const allStartupInformations = infoOfStartups;
-  for (let i=0; i<allStartupInformations.length; i++) {
-    const startupInfoAtIndex = allStartupInformations[i];
-    const lowerCasedStartupNameAtIndex = startupInfoAtIndex.startupName.toLocaleLowerCase("tr");
-    const lowerCasedStartupNameAsArgument = startupName.toLocaleLowerCase("tr");
-    if (lowerCasedStartupNameAtIndex.includes(lowerCasedStartupNameAsArgument)) {
-      foundStartups.push(allStartupInformations[i]);
+const searchStartup = (searchText) => {
+  const allStartupInformations = INFO_OF_STARTUPS;
+  let searchResult = allStartupInformations.filter((startupInformation) => {
+    if (checkStringIncludesAnotherWithoutCaseSensitivity(startupInformation.startupName, searchText)) {
+      return true;
     }
-  }
-  return foundStartups;
+    return false;
+  });
+  return searchResult;
+}
+
+const checkStringIncludesAnotherWithoutCaseSensitivity = (mainString, searched) => {
+  let mainStringLowerCased = getTurkishLowerCasedString(mainString);
+  let searchStringLowerCased = getTurkishLowerCasedString(searched);
+  return mainStringLowerCased.includes(searchStringLowerCased);
+}
+
+const getTurkishLowerCasedString = (text) => {
+  return text.toLocaleLowerCase("tr");
 }
 
 
