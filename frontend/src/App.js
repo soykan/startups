@@ -3,10 +3,10 @@ import * as React from 'react';
 
 const infoOfStartups = [
   {"startupName": "Getir", 
-  "startupWebSite": "https://getir.uk"},
+   "startupWebSite": "https://getir.uk"},
 
   {"startupName": "YemekSepeti", 
-  "startupWebSite": "https://yemeksepeti.com"}
+   "startupWebSite": "https://yemeksepeti.com"}
 ]
 
 function App() {
@@ -32,13 +32,13 @@ const Search = () => {
         <input type="text" placeholder="startup name" name="startupName" />
         <input type="submit" value="Search" />
       </form>
-    <div>
-      {foundStartups.map((startup) => {
-        return (
-          <StartupDetails startup={startup} />
-        )
-      })}
-    </div>
+      <div>
+        {foundStartups.map((startup) => {
+          return (
+            <StartupDetails startup={startup} />
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -56,7 +56,10 @@ const searchStartup = (startupName) => {
   let foundStartups = [];
   const allStartupInformations = infoOfStartups;
   for (let i=0; i<allStartupInformations.length; i++) {
-    if (allStartupInformations[i].startupName.toLocaleLowerCase("tr").includes(startupName.toLocaleLowerCase("tr"))) {
+    const startupInfoAtIndex = allStartupInformations[i];
+    const lowerCasedStartupNameAtIndex = startupInfoAtIndex.startupName.toLocaleLowerCase("tr");
+    const lowerCasedStartupNameAsArgument = startupName.toLocaleLowerCase("tr");
+    if (lowerCasedStartupNameAtIndex.includes(lowerCasedStartupNameAsArgument)) {
       foundStartups.push(allStartupInformations[i]);
     }
   }
