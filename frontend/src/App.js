@@ -56,7 +56,7 @@ const searchStartup = (startupName) => {
   let foundStartups = [];
   const allStartupInformations = infoOfStartups;
   for (let i=0; i<allStartupInformations.length; i++) {
-    if (allStartupInformations[i].startupName.toLowerCase().includes(startupName.toLowerCase())) {
+    if (allStartupInformations[i].startupName.toLocaleLowerCase("tr").includes(startupName.toLocaleLowerCase("tr"))) {
       foundStartups.push(allStartupInformations[i]);
     }
   }
