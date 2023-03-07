@@ -10,13 +10,15 @@ const INFO_OF_STARTUPS = [
 ]
 
 const App = () => (
-  <div>
-    <Search />
-  </div>
+  <SiteHeader />
 ) 
 
 
-
+const SiteHeader = () => (
+  <div>
+    <Search />
+  </div>
+)
 
 
 const Search = () => {
