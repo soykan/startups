@@ -1,3 +1,4 @@
+import "./bootstrap/bootstrap.min.css";
 import './App.css';
 import * as React from 'react';
 
@@ -10,13 +11,35 @@ const INFO_OF_STARTUPS = [
 ]
 
 const App = () => (
-  <SiteHeader />
+  <div>
+    <SiteHeader />
+    <SiteMainContent />
+    <SiteFooter />
+  </div>
 ) 
 
 
 const SiteHeader = () => (
   <div>
+    Site Header
     <Search />
+  </div>
+)
+
+
+const SiteMainContent = () => {
+  const [mainContent, setMainContent] = React.useState("<div name='mainContent'></div>");
+  return (
+    <main>
+      Site Body
+    </main>
+  );
+}
+
+
+const SiteFooter = () => (
+  <div>
+    Site Footer
   </div>
 )
 
@@ -28,6 +51,7 @@ const Search = () => {
     setFoundStartups(searchStartup(event.target.elements.startupName.value));
   } 
 
+  const showStartup = false;
 
   return (
     <div>
@@ -37,7 +61,7 @@ const Search = () => {
       </form>
       <div>
         {foundStartups.map((startup) => {
-          return <StartupDetailsInSearchResults startup={startup} />
+          return <SearchResults startup={startup} showStartup={showStartup} />
         })
         }
       </div>
@@ -46,12 +70,30 @@ const Search = () => {
 }
 
 
-const StartupDetailsInSearchResults = (props) => (
-  <div>
-    <h3>{props.startup.startupName}</h3>
-    <a href={props.startup.startupWebSite}>{props.startup.startupWebSite}</a>
-  </div>
-)
+const StartupDetails = (props) => {
+  return (
+    <div><h1>STARTUP NAME : {props.startup.startupName}</h1></div>
+  )
+}
+
+
+
+const SearchResults = (props) => {
+  const handleStartupNameOnClick = (event) => {
+    event.preventDefault();
+  }
+  return (
+    <div>
+      <h3>
+        <button type="button" className="btn btn-link" onClick={(event) => handleStartupNameOnClick(event)}>
+          {props.startup.startupName}
+        </button>
+      </h3>
+      <a href={props.startup.startupWebSite}>{props.startup.startupWebSite}</a>
+    </div> 
+  );
+}
+
 
 
 const searchStartup = (searchText) => {
