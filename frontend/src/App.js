@@ -63,12 +63,10 @@ const Search = () => {
     return (
       <div>
         <SearchForm handleSearchFormSubmit={handleSearchFormSubmit} />
-        <div>
           {foundStartups.map((startup) => {
             return <SearchResults startup={startup} setClickedStartupName={setClickedStartupName} setSearchOperation={setSearchOperation}/>
           })
           }
-        </div>
       </div>
     );
   } else {
