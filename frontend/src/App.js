@@ -9,13 +9,14 @@ const INFO_OF_STARTUPS = [
    "startupWebSite": "https://yemeksepeti.com"}
 ]
 
-function App() {
-  return (
-    <div>
-      <Search />
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <Search />
+  </div>
+) 
+
+
+
 
 
 const Search = () => {
