@@ -3,12 +3,19 @@ import './App.css';
 import * as React from 'react';
 
 const INFO_OF_STARTUPS = [
-  {"startupName": "Getir", 
-   "startupWebSite": "https://getir.uk"},
+  {
+    "startupId": 0,
+    "startupName": "Getir", 
+    "startupWebSite": "https://getir.uk"
+  },
 
-  {"startupName": "YemekSepeti", 
-   "startupWebSite": "https://yemeksepeti.com"}
+  {
+    "startupId": 1,
+    "startupName": "YemekSepeti", 
+    "startupWebSite": "https://yemeksepeti.com"
+  }
 ]
+
 
 const App = () => (
   <div>
@@ -27,14 +34,12 @@ const SiteHeader = () => (
 )
 
 
-const SiteMainContent = () => {
-  const [mainContent, setMainContent] = React.useState("<div name='mainContent'></div>");
-  return (
+const SiteMainContent = () => (
     <main>
       Site Body
     </main>
-  );
-}
+);
+
 
 
 const SiteFooter = () => (
@@ -46,27 +51,41 @@ const SiteFooter = () => (
 
 const Search = () => {
   const [foundStartups, setFoundStartups] = React.useState([]);
+  const [clickedStartupName, setClickedStartupName] = React.useState(null);
+  const [searchOperation, setSearchOperation] = React.useState(true);
   const handleSearchFormSubmit = (event) => {
     event.preventDefault();
+    setSearchOperation(true);
     setFoundStartups(searchStartup(event.target.elements.startupName.value));
   } 
 
-  const showStartup = false;
-
-  return (
-    <div>
-      <form onSubmit={(event) => handleSearchFormSubmit(event)}>
-        <input type="text" placeholder="startup name" name="startupName" />
-        <input type="submit" value="Search" />
-      </form>
+  if (searchOperation) {
+    return (
       <div>
-        {foundStartups.map((startup) => {
-          return <SearchResults startup={startup} showStartup={showStartup} />
-        })
-        }
+        <form onSubmit={(event) => handleSearchFormSubmit(event)}>
+          <input type="text" placeholder="startup name" name="startupName" />
+          <input type="submit" value="Search" />
+        </form>
+        <div>
+          {foundStartups.map((startup) => {
+            return <SearchResults startup={startup} setClickedStartupName={setClickedStartupName} setSearchOperation={setSearchOperation}/>
+          })
+          }
+        </div>
       </div>
-    </div>
-  )
+    );
+  } else {
+    return (
+      <div>
+        <form onSubmit={(event) => handleSearchFormSubmit(event)}>
+          <input type="text" placeholder="startup name" name="startupName" />
+          <input type="submit" value="Search" />
+        </form>
+        <StartupDetails startup={clickedStartupName} />
+      </div>
+    );
+  }
+
 }
 
 
@@ -77,15 +96,16 @@ const StartupDetails = (props) => {
 }
 
 
-
 const SearchResults = (props) => {
   const handleStartupNameOnClick = (event) => {
     event.preventDefault();
+    props.setClickedStartupName(props.startup);
+    props.setSearchOperation(false);
   }
   return (
     <div>
       <h3>
-        <button type="button" className="btn btn-link" onClick={(event) => handleStartupNameOnClick(event)}>
+        <button type="button" startupObject={props.startup.startupName} className="btn btn-link" onClick={(event) => handleStartupNameOnClick(event)}>
           {props.startup.startupName}
         </button>
       </h3>
