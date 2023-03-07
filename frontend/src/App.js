@@ -41,7 +41,6 @@ const SiteMainContent = () => (
 );
 
 
-
 const SiteFooter = () => (
   <div>
     Site Footer
@@ -61,6 +60,7 @@ const Search = () => {
 
   if (searchOperation) {
     return (
+
       <div>
         <SearchForm handleSearchFormSubmit={handleSearchFormSubmit} />
           {foundStartups.map((startup) => {
@@ -68,17 +68,21 @@ const Search = () => {
           })
           }
       </div>
+
     );
   } else {
     return (
+
       <div>
         <SearchForm handleSearchFormSubmit={handleSearchFormSubmit} />
         <StartupDetails startup={clickedStartupName} />
       </div>
+
     );
   }
 
 }
+
 
 const SearchForm = (props) => (
   <form onSubmit={(event) => props.handleSearchFormSubmit(event)}>
@@ -112,7 +116,6 @@ const SearchResults = (props) => {
     </div> 
   );
 }
-
 
 
 const searchStartup = (searchText) => {
