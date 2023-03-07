@@ -62,10 +62,7 @@ const Search = () => {
   if (searchOperation) {
     return (
       <div>
-        <form onSubmit={(event) => handleSearchFormSubmit(event)}>
-          <input type="text" placeholder="startup name" name="startupName" />
-          <input type="submit" value="Search" />
-        </form>
+        <SearchForm handleSearchFormSubmit={handleSearchFormSubmit} />
         <div>
           {foundStartups.map((startup) => {
             return <SearchResults startup={startup} setClickedStartupName={setClickedStartupName} setSearchOperation={setSearchOperation}/>
@@ -77,16 +74,20 @@ const Search = () => {
   } else {
     return (
       <div>
-        <form onSubmit={(event) => handleSearchFormSubmit(event)}>
-          <input type="text" placeholder="startup name" name="startupName" />
-          <input type="submit" value="Search" />
-        </form>
+        <SearchForm handleSearchFormSubmit={handleSearchFormSubmit} />
         <StartupDetails startup={clickedStartupName} />
       </div>
     );
   }
 
 }
+
+const SearchForm = (props) => (
+  <form onSubmit={(event) => props.handleSearchFormSubmit(event)}>
+    <input type="text" placeholder="startup name" name="startupName" />
+    <input type="submit" value="Search" />
+  </form>
+)
 
 
 const StartupDetails = (props) => {
