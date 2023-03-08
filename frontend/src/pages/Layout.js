@@ -1,4 +1,5 @@
 import {Outlet, Link} from "react-router-dom";
+import SearchForm from "./SearchForm";
 
 const Layout = () => (
   <div>
@@ -26,6 +27,11 @@ const SiteHeader = () => (
 
     <Link to="/search-results">Search Results</Link>
 
+    <NewLine />
+    <NewLine />
+
+    <SearchForm />
+
     <Spacing />
   </div>
 )
@@ -37,8 +43,16 @@ const SiteFooter = () => (
   </div>
 )
 
+
 const Spacing = () => (
   <>&nbsp;&nbsp;&nbsp;</>
 )
+
+
+const NewLine = () => (
+  <br />
+)
+
+
 
 export default Layout;
