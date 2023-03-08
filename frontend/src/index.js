@@ -19,7 +19,9 @@ root.render(
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="startup-information" element={<StartupInformation />} />
-          <Route path="search-results" element={<SearchResults />} />
+          <Route path="search-results">
+            <Route path=":searchText" element={<SearchResults />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

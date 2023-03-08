@@ -23,10 +23,6 @@ const SiteHeader = () => (
 
     <Link to="/startup-information">Startup Information</Link>
 
-    <Spacing />
-
-    <Link to="/search-results">Search Results</Link>
-
     <NewLine />
     <NewLine />
 
