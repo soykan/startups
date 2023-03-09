@@ -22,8 +22,9 @@ const SearchResults = () => {
   
   return (
     <div>
+      <h3>Search results here:</h3>
       {searchResult.map((startup) => {
-        return <h3>{startup.startupName}</h3>;
+        return <h4>{startup.startupName}</h4>;
       })
       }
     </div>
