@@ -1,6 +1,6 @@
 from django.db import models
 
-class StartupDetails(models.Model):
+class StartupDetail(models.Model):
     name = models.CharField(max_length=300)
     logo = models.ImageField(upload_to='images')
     location = models.TextField()
@@ -11,11 +11,11 @@ class StartupDetails(models.Model):
     
     website = models.CharField(max_length=300) 
     mail_address = models.CharField(max_length=300)
-    investment_amount = models.TextField(max_length=100)
+    investment_amount = models.CharField(max_length=100)
 
 
-class StartupTags(models.Model):
-    startup = models.ForeignKey(StartupDetails(), on_delete=models.CASCADE)
+class StartupTag(models.Model):
+    startup = models.ForeignKey(StartupDetail, on_delete=models.CASCADE)
     tag = models.CharField(max_length=100)
 
 """

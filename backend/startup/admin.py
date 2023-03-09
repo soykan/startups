@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import StartupDetail, StartupTag
+
+admin.site.register(StartupDetail)
+admin.site.register(StartupTag)
