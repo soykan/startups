@@ -19,10 +19,6 @@ const SiteHeader = () => (
 
     <Link to="/">Home Page</Link>
 
-    <Spacing />
-
-    <Link to="/startup-details">Startup Information</Link>
-
     <NewLine />
     <NewLine />
 

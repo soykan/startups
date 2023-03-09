@@ -23,11 +23,11 @@ const SearchResults = () => {
   return (
     <div>
       <h3>Search results here:</h3>
-      {searchResult.map((startup) => {
+      {(searchResult.length !== 0) ? searchResult.map((startup) => {
         return (
           <a href={"/startup-details/" + startup.startupName}><h4>{startup.startupName}</h4></a>
         );
-      })
+      }) : <h2>There is no search result related to your input..</h2>
       }
     </div>
   );
@@ -42,6 +42,7 @@ const searchStartup = (searchText) => {
     }
     return false;
   });
+  console.log(searchResult);
   return searchResult;
 }
 
