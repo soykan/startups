@@ -42,7 +42,7 @@ const searchStartup = (searchText) => {
     }
     return false;
   });
-  console.log(searchResult);
+  
   return searchResult;
 }
 
