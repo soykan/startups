@@ -24,7 +24,9 @@ const SearchResults = () => {
     <div>
       <h3>Search results here:</h3>
       {searchResult.map((startup) => {
-        return <h4>{startup.startupName}</h4>;
+        return (
+          <a href={"/startup-details/" + startup.startupName}><h4>{startup.startupName}</h4></a>
+        );
       })
       }
     </div>

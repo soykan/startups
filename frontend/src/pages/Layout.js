@@ -21,7 +21,7 @@ const SiteHeader = () => (
 
     <Spacing />
 
-    <Link to="/startup-information">Startup Information</Link>
+    <Link to="/startup-details">Startup Information</Link>
 
     <NewLine />
     <NewLine />

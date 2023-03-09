@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './pages/Layout';
 import HomePage from './pages/HomePage';
-import StartupInformation from './pages/StartupInformation';
+import StartupDetails from './pages/StartupDetails';
 import SearchResults from './pages/SearchResults';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -17,12 +17,19 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+
           <Route index element={<HomePage />} />
-          <Route path="startup-information" element={<StartupInformation />} />
+
+          <Route path="startup-details">
+            <Route path=":startupName" element={<StartupDetails />} />
+          </Route>
+          
           <Route path="search-results">
             <Route path=":searchText" element={<SearchResults />} />
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
