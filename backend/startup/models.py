@@ -17,17 +17,3 @@ class StartupDetail(models.Model):
 class StartupTag(models.Model):
     startup = models.ForeignKey(StartupDetail, on_delete=models.CASCADE)
     tag = models.CharField(max_length=100)
-
-"""
-Şirket İsmi
-Şirket Logosu
-Şirket Lokasyonu
-Şirket Çalışan Sayısı
-Şirket Kuruluş Tarihi
-Şirket Kurucu Listesi
-Şirket Özet Açıklaması
-Şirket Etiketleri (bunu sonra anlatırım)
-Şirket Web Sitesi
-Şirket İletişim Maili
-Şirketin Topladığı Toplam Yatırım Miktarı
-"""
