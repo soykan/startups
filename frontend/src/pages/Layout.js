@@ -19,6 +19,7 @@ const Layout = () => (
   </div>
 )
 
+
 // contains fixed navbar
 const SiteHeader = () => (
   <header>
@@ -62,9 +63,11 @@ const SiteHeader = () => (
 */
 
 const SiteFooter = () => (
-  <div>
-    Site Footer
-  </div>
+  <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+    <div class="container">
+      <span class="text-muted">Developed with React & Django </span>
+    </div>
+  </footer>
 )
 
 
