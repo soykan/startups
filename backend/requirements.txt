@@ -1,5 +1,0 @@
-Pillow
-Django
-psycopg2
-djangorestframework
-

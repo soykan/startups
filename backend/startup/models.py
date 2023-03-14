@@ -2,7 +2,7 @@ from django.db import models
 
 class StartupDetail(models.Model):
     name = models.CharField(max_length=300)
-    logo = models.FileField(upload_to='images')
+    logo = models.ImageField(upload_to='images')
     location = models.TextField()
     employee_count = models.IntegerField()
     founding_date = models.DateField(auto_now=False, auto_now_add=False)
