@@ -4,4 +4,5 @@ admin-account.txt
 backend/__pycache__/
 startup/__pycache__/
 TODO.txt
-data/
+data/**
+data
